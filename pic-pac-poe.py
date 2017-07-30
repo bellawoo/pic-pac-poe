@@ -50,8 +50,29 @@ def check_board(board, move):
 
 #Are there spaces left?
 def game_over(board):
-	pass
+	if " " in board[1:]:
+		return False
+	else:
+		return True
 
 #Ask and process play
 def take_turn():
-	pass
+	global board
+	move = 'Make your move: ' + mark
+	while True:
+		try:
+			choice = int(raw_input(move))
+		except ValueError:
+			print("Oops! Looks like that's not a valid entry. Try again with a number from 1-9.")
+			continue
+
+		if choice not in  range(1,10):
+			print("Oops! Looks like that's not a valid entry. Try again with a number from 1-9.")
+			continue
+
+		if board[choice] == " "
+			board[choice] == mark
+			break
+		else:
+			print "Whoa there! Looks like someone's already there. Try choosing another spot."
+			continue
