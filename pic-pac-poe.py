@@ -3,9 +3,11 @@ from IPython.display import clear_output
 import random
 
 board = [' '] * 10
+referee = ''
+game_state = True
 
 #Shows board
-def show_board(board):
+def show_board():
 	clear_output()
 	print(' | |')
 	print(' '+board[7]+' | '+board[8]+' | ' +board[9])
@@ -18,17 +20,27 @@ def show_board(board):
 	print(' '+board[1]+' | '+board[2]+' | '+board[3])
 	print(' | |')
 
-#Assigns X or O
-def player_symbol():
-	pass
-
-#Determines who goes first
-def first_player():
-	pass
-
 #Assign symbol to board
-def make_play(board, marker, move):
-	pass
+def check_board(board, marker, move):
+	global board,referee, referee
+	referee = ''
+	move = str(move)
+	take_turn(move)
+
+	if three_row(board,mark)
+		clear_output
+		show_board()
+		referee = mark +" wins!"
+		game_state = False
+
+	clear_output()
+	show_board()
+
+	if game_over(board):
+		referee = "No more moves. Tie!"
+		game_state = False
+
+	return game_state, referee
 
 #Checks against possible wins
 def three_row(board, mark):
@@ -44,10 +56,6 @@ def three_row(board, mark):
 	else:
 		return False
 
-#Is space available?
-def check_board(board, move):
-	pass
-
 #Are there spaces left?
 def game_over(board):
 	if " " in board[1:]:
@@ -55,8 +63,13 @@ def game_over(board):
 	else:
 		return True
 
-#Ask and process play
-def take_turn():
+def reset_board():
+	global board, game_state
+	board = [' '] * 10
+	game_state = True
+
+#Ask and process move
+def take_turn(move):
 	global board
 	move = 'Make your move: ' + mark
 	while True:
@@ -74,5 +87,35 @@ def take_turn():
 			board[choice] == mark
 			break
 		else:
-			print "Whoa there! Looks like someone's already there. Try choosing another spot."
+			print("Whoa there! Looks like someone's already there. Try choosing another spot.")
 			continue
+
+def play_game():
+	global referee
+
+	reset_board()
+
+	x = 'X'
+	o = 'O'
+
+	while True:
+		clear_output()
+		show_board()
+
+		game_state, referee = take_turn(x)
+		print referee
+		if game_state == False:
+			break
+
+		game_state, referee = take_turn(o)
+		print referee
+		if game_state == False;
+			break
+
+		new_game = raw_input('Play again? y/n')
+		if new_game.lower == 'y':
+			play_game()
+		else:
+			print("Goodbye!")
+
+play_game()
