@@ -14,7 +14,7 @@ def show_board():
 	clear_output()
 	print(' '+board[7]+'|'+board[8]+'|' +board[9])
 	print('-------')
-	print(' '+board[4]+'|'+board[5]+'| '+board[6])
+	print(' '+board[4]+'|'+board[5]+'|'+board[6])
 	print('-------')
 	print(' '+board[1]+'|'+board[2]+'|'+board[3])
 
@@ -67,7 +67,7 @@ def check_board(mark):
 	take_turn(move)
 
 	if three_row(board,mark):
-		clear_output
+		clear_output()
 		show_board()
 		referee = mark +" wins!"
 		game_state = False
@@ -103,8 +103,8 @@ def play_game():
 		if game_state == False:
 			break
 
-		new_game = input('Play again? y/n')
-		if new_game.lower == 'y':
-			play_game()
-		else:
-			print("Goodbye!")
+	new_game = str(input('Play again? y/n'))
+	if new_game == 'y':
+		play_game()
+	else:
+		print("Goodbye!")
